@@ -1,0 +1,240 @@
+* {
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Screens */
+
+.screen {
+  display: none;
+  padding: 40px 20px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Text */
+
+h1, h2 {
+  color: white;
+}
+
+.line {
+  font-size: 20px;
+  color: white;
+  margin: 15px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Photos */
+
+.photo {
+  width: 250px;
+  border-radius: 20px;
+  margin: 20px 0;
+  object-fit: cover;
+}
+
+/* Focus image more toward top */
+
+.top-focus {
+  object-position: center top;
+}
+
+/* Focus image more center */
+
+.center-focus {
+  object-position: center center;
+}
+
+/* Extra Polaroid Rotations */
+
+.rotate-right2 {
+  transform: rotate(7deg);
+}
+
+.rotate-left3 {
+  transform: rotate(-8deg);
+}
+
+.rotate-right3 {
+  transform: rotate(4deg);
+}
+
+/* Polaroid entrance animation */
+
+.polaroid {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.polaroid:nth-child(1) { animation-delay: 0.2s; }
+.polaroid:nth-child(2) { animation-delay: 0.4s; }
+.polaroid:nth-child(3) { animation-delay: 0.6s; }
+.polaroid:nth-child(4) { animation-delay: 0.8s; }
+.polaroid:nth-child(5) { animation-delay: 1s; }
+.polaroid:nth-child(6) { animation-delay: 1.2s; }
+.polaroid:nth-child(7) { animation-delay: 1.4s; }
+.polaroid:nth-child(8) { animation-delay: 1.6s; }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Natural downscaling for high-res images */
+
+.natural-scale {
+  object-fit: contain;
+  background: #fff;
+  padding: 2px;
+}
+
+/* Buttons */
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: #ff4d6d;
+  color: white;
+}
+
+#noBtn {
+  background: #ccc;
+  position: relative;
+}
+
+/* Floating Hearts */
+
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url("Heart.gif") no-repeat center/contain;
+  animation: floatUp linear forwards;
+}
+
+/* Heart animation */
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh) scale(0.8);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-120px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* ================================
+   POLAROID COLLAGE
+================================ */
+
+.polaroid-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin: 40px auto;
+  max-width: 900px;
+}
+
+/* Main polaroid card */
+
+.polaroid {
+  background: white;
+  padding: 15px 15px 35px;
+  width: 180px;
+  border-radius: 4px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+
+  /* Animation */
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  animation: polaroidIn 0.8s ease forwards;
+}
+
+.polaroid img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+/* Caption */
+
+.polaroid p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #444;
+  font-family: "Comic Sans MS", "Bradley Hand", cursive;
+}
+
+/* Rotations */
+
+.rotate-left  { transform: rotate(-6deg); }
+.rotate-right { transform: rotate(5deg); }
+.rotate-left2 { transform: rotate(-3deg); }
+.rotate-right2{ transform: rotate(7deg); }
+.rotate-left3 { transform: rotate(-8deg); }
+.rotate-right3{ transform: rotate(4deg); }
+
+/* Stagger animation */
+
+.polaroid:nth-child(1){ animation-delay: .2s; }
+.polaroid:nth-child(2){ animation-delay: .4s; }
+.polaroid:nth-child(3){ animation-delay: .6s; }
+.polaroid:nth-child(4){ animation-delay: .8s; }
+.polaroid:nth-child(5){ animation-delay: 1s; }
+.polaroid:nth-child(6){ animation-delay: 1.2s; }
+.polaroid:nth-child(7){ animation-delay: 1.4s; }
+.polaroid:nth-child(8){ animation-delay: 1.6s; }
+
+@keyframes polaroidIn {
+  to {
+    opacity: 1;
+    transform: rotate(var(--r,0deg)) scale(1);
+  }
+}
